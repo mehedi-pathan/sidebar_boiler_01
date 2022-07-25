@@ -1,0 +1,326 @@
+.app {
+  display: flex;
+}
+.sidebar {
+  position: relative;
+  background-color: rgba(0, 128, 0, 0.2);
+  width: 300px;
+  height: 100vh;
+  padding: 30px 20px;
+  transition: width 0.5s ease-in;
+
+  .d-flex {
+    display: flex;
+    justify-content: center;
+  }
+
+  .top_section {
+    position: relative;
+    .logo {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      display: inline-block;
+
+      img {
+        transform: rotate(180deg);
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .toggle_menu_btn {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: inline-block;
+      transform: translateY(-50%);
+
+      .right_arrow,
+      .left_arrow {
+        color: #333;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .search_controller {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgba(51, 51, 51, 0.49);
+    border-radius: 10px;
+    padding: 0 15px 0 0;
+    margin: 10px 0;
+    color: #333;
+
+    .search_btn {
+      color: #666;
+      cursor: pointer;
+      font-size: 35px;
+    }
+
+    input[type="text"] {
+      background: transparent;
+      border: none;
+      width: 100%;
+      font-size: 15px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-radius: 1px;
+    background-color: rgba(51, 51, 51, 0.457);
+  }
+
+  //main menu style
+  .main_menu {
+    width: 100%;
+    max-height: 75%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 5px 0;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      background-color: transparent;
+      border-radius: 10px;
+      outline: none;
+      border: none;
+      transition: 1s ease-in;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 128, 0, 0.321);
+      outline: none;
+      border-radius: 10px;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+    }
+
+    .menu_items {
+      margin: 20px 0;
+      .title {
+        font-size: 11px;
+        color: #333;
+        font-weight: lighter;
+        padding: 10px 0;
+        text-transform: uppercase;
+      }
+      .item {
+        overflow: hidden;
+        position: relative;
+        padding: 10px 0;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: 0.1s ease-in;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          right: 0;
+          height: 0;
+          background-color: #74bd68;
+          top: 0;
+          border-radius: 10px 0 0 10px;
+          transition: height 0.3s ease-in;
+        }
+
+        a {
+          height: 40px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          text-decoration: none;
+          font-size: 15px;
+          padding: 10px 0;
+          color: #333;
+          position: relative;
+          &:focus,
+          &:active {
+            text-decoration: none;
+            border: none;
+          }
+
+          .nav_icon {
+            svg {
+              transition: 0.2s all;
+              font-size: 40px;
+              line-height: 40px;
+            }
+          }
+          .nav_title {
+            display: inline-block;
+            text-transform: capitalize;
+            padding: 0 10px;
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+          }
+        }
+
+        //for sub menu style
+        .sub_menu {
+          color: #333;
+          margin-left: 20px;
+          border-left: 1px solid #666;
+          box-sizing: border-box;
+          padding-left: 30px;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease-in;
+
+          a {
+            display: block;
+            margin: 5px 0;
+            font-size: 15px;
+            font-weight: 600;
+          }
+
+          .sub_menu_items {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .sub_menu_icon {
+              font-size: 12px;
+              padding: 0 10px 0 0;
+            }
+          }
+        }
+        .active {
+          max-height: 200px;
+        }
+
+        //hover effects for menu items
+        &:hover svg {
+          transform: scale(0.8);
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: #8fbc8f6b;
+          border-bottom: 1px solid green;
+          box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px,
+            rgb(60 64 67 / 15%) 0px 2px 6px 2px;
+          border-radius: 10px;
+          &::before {
+            width: 4px;
+            height: 100%;
+          }
+        }
+        //hover style end
+      }
+    }
+  }
+  .sidemenu_footer {
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .avatar {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+
+      img {
+        max-width: 100%;
+      }
+    }
+    .user_info {
+      position: absolute;
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+      h5 {
+        font-size: 15px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+//inactive style
+.inactive {
+  transition: 0.5s;
+  width: 80px;
+
+  .toggle_menu_btn {
+    right: -50px !important;
+  }
+
+  .search_btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .main_menu {
+    .menu_items {
+      margin: 10px 0;
+      .title {
+        text-align: center;
+      }
+    }
+    .item {
+      padding: 0 !important;
+
+      &::before {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+    }
+    .nav_title {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+  .sidemenu_footer {
+    .user_info {
+      p,
+      h5 {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
